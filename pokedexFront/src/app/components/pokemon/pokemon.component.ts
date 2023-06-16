@@ -53,7 +53,7 @@ export class PokemonComponent {
     const random = Math.floor(Math.random() * 16) + 85;
 
     // Calculamos el daño real infligido. utilizamos la formula proporcionada en el enunciado.
-    const daño = (((2 * this.nivel / 5 + 2) * this.puntosAtaqueBase * movimiento.poder / rival.puntosDefensaBase) / 50) * efectividad * random / 100
+    const daño = Math.floor((((2 * this.nivel / 5 + 2) * this.puntosAtaqueBase * movimiento.poder / rival.puntosDefensaBase) / 50) * efectividad * random / 100)
 
 
     return daño

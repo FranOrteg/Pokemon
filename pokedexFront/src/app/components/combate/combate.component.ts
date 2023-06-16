@@ -33,8 +33,8 @@ export class CombateComponent {
 // Creamos instancias de los pokemon para simular un combate
 const pokemon1 = new PokemonComponent();
 pokemon1.nivel = 50;
-pokemon1.nombre = 'Pikachu';
-pokemon1.tipo = 'Electrico';
+pokemon1.nombre = 'Chori';
+pokemon1.tipo = 'Agua';
 pokemon1.puntosSaludActuales = 100;
 pokemon1.puntosSaludTotales = 100;
 pokemon1.puntosAtaqueBase = 70;
@@ -46,8 +46,8 @@ pokemon1.movimientos = [];
 
 const pokemon2 = new PokemonComponent();
 pokemon2.nivel = 45;
-pokemon2.nombre = 'Charizard';
-pokemon2.tipo = 'Fuego';
+pokemon2.nombre = 'Jiggly';
+pokemon2.tipo = 'Roca';
 pokemon2.puntosSaludActuales = 120;
 pokemon2.puntosSaludTotales = 120;
 pokemon2.puntosAtaqueBase = 85;

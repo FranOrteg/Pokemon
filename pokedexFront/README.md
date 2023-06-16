@@ -35,3 +35,17 @@ En este componente se implementarán las siguientes funcionalidades:
     - Obtenemos el indice.
 
     - Obtenemos la posición de efectividad en la tabla 
+
+
+### PART 2
+
+Crear un API para almacenar la información de Pokémons, estilo pokedex. (Libre elección
+de implementación)
+    
+- Debe haber al menos los siguientes recursos:
+- Pokémons base (CRUD).
+- Movimientos (CRUD).
+- Mis Pokémons con sus 4 movimientos (CRUD).
+- Consulta para obtener los movimientos de un Pokémon.
+- Consulta para obtener los movimientos posibles de un Pokémon.
+- Consulta para obtener una lista con los Pokémons que comparten un mismo movimiento.

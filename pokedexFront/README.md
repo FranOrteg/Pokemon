@@ -39,8 +39,7 @@ En este componente se implementarán las siguientes funcionalidades:
 
 ### PART 2
 
-Crear un API para almacenar la información de Pokémons, estilo pokedex. (Libre elección
-de implementación)
+Crear un API para almacenar la información de Pokémons, estilo pokedex.
     
 - Debe haber al menos los siguientes recursos:
 - Pokémons base (CRUD).

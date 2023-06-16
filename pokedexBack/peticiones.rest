@@ -1,0 +1,51 @@
+@Host = http://localhost:3000
+@urlPokemon = /pokemon
+
+### POKEMONS
+
+// Recuperar todos los pokemons
+GET {{Host}}{{urlPokemon}}
+
+###
+// Recuperar pokemon por Id
+GET {{Host}}{{urlPokemon}}/1
+
+###
+// Registro pokemon
+POST {{Host}}{{urlPokemon}}/create
+Content-Type: application/json
+
+{
+    "nivel": 100, 
+    "nombre": "Bulbasur", 
+    "tipo": "Water",
+    "puntosSaludActuales": 160, 
+    "puntosSaludTotales": 150, 
+    "puntosAtaqueBase": 50, 
+    "puntosDefensaBase": 90, 
+    "puntosAtaqueEspecialBase": 120,
+    "puntosVelocidadBase": 30,
+    "urlImage": "https://img.pokemondb.net/artwork/avif/bulbasaur.avif"
+}
+
+###
+// Acualizar Pokemon
+PUT {{Host}}{{urlPokemon}}/3
+Content-Type: application/json
+
+{
+    "nivel": 70, 
+    "nombre": "Bulbasur", 
+    "tipo": "Water",
+    "puntosSaludActuales": 110, 
+    "puntosSaludTotales": 150, 
+    "puntosAtaqueBase": 70, 
+    "puntosDefensaBase": 90, 
+    "puntosAtaqueEspecialBase": 120,
+    "puntosVelocidadBase": 30,
+    "urlImage": "https://img.pokemondb.net/artwork/avif/bulbasaur.avif"
+}
+
+###
+// Borrar pokemon
+DELETE {{Host}}{{urlPokemon}}/3

@@ -2,26 +2,36 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
-## Development server
+## PART 1
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Se requiere un método que, al pasarle un Pokémon, el movimiento escogido del mismo y
+su rival devuelva el cálculo del daño.
 
-## Code scaffolding
+    - Creación de componentes: se han creado 3 componentes con la intención de reutilizarlos en un futuro en la implementación de otras funcionalidades del proyecto, estos componentes son: "pokemonComponent", "combateComponent", "movimientosComponent"
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### PokemonComponent
 
-## Build
+En este componente se implementarán las siguientes funcionalidades:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    - Definición de las propiedades de los Pokémon.
+    
+    - Función que calculará el daño al usar un movimiento específico.
+        - calcularDaño(){}
+    
+    - Función que calculará la efectividad del ataque en relación a la tabla proporcionada
+        - obtenerEfectividad(){}
 
-## Running unit tests
+    - Función que calculará la posición en la tabla de efectividad
+        - obtenerIndiceTipo(){}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### CombateComponent
 
-## Running end-to-end tests
+En este componente se implementarán las siguientes funcionalidades:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    - Creamos las instancias que simalaran los pokemons para el combate.
 
-## Further help
+    - Calculamos el daño.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    - Obtenemos el indice.
+
+    - Obtenemos la posición de efectividad en la tabla 

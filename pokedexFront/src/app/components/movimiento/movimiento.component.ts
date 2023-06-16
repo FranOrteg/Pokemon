@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./movimiento.component.css']
 })
 export class MovimientoComponent {
+  nombre: string;
+  poder: number;
 
+  constructor() {
+    this.nombre = "";
+    this.poder = 0;
+  }
 }

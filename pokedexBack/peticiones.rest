@@ -1,7 +1,10 @@
 @Host = http://localhost:3000
 @urlPokemon = /pokemon
+@urlMovimientos = /movimientos
 
-### POKEMONS
+################
+### POKEMONS ###
+################
 
 // Recuperar todos los pokemons
 GET {{Host}}{{urlPokemon}}
@@ -11,26 +14,34 @@ GET {{Host}}{{urlPokemon}}
 GET {{Host}}{{urlPokemon}}/1
 
 ###
+// Recuperar pokemon por nombre
+GET {{Host}}{{urlPokemon}}/search/Pikachu
+
+###
+// Recuperar pokemon por Type
+GET {{Host}}{{urlPokemon}}/type/Fire
+
+###
 // Registro pokemon
 POST {{Host}}{{urlPokemon}}/create
 Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "Bulbasur", 
-    "tipo": "Water",
+    "nombre": "Charmander", 
+    "tipo": "Fire",
     "puntosSaludActuales": 160, 
     "puntosSaludTotales": 150, 
-    "puntosAtaqueBase": 50, 
+    "puntosAtaqueBase": 30, 
     "puntosDefensaBase": 90, 
-    "puntosAtaqueEspecialBase": 120,
-    "puntosVelocidadBase": 30,
-    "urlImage": "https://img.pokemondb.net/artwork/avif/bulbasaur.avif"
+    "puntosAtaqueEspecialBase": 150,
+    "puntosVelocidadBase": 90,
+    "urlImage": "https://img.pokemondb.net/artwork/avif/charmander.avif"
 }
 
 ###
 // Acualizar Pokemon
-PUT {{Host}}{{urlPokemon}}/3
+PUT {{Host}}{{urlPokemon}}/1
 Content-Type: application/json
 
 {
@@ -49,3 +60,10 @@ Content-Type: application/json
 ###
 // Borrar pokemon
 DELETE {{Host}}{{urlPokemon}}/3
+
+###################
+### MOVIMIENTOS ###
+###################
+
+// Recuperar todos los movimientos
+GET {{Host}}{{urlMovimientos}}

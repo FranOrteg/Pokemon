@@ -1,7 +1,8 @@
-const { getAllPokemons, getPokemonById, create, updatePokemon, deletePokemon } = require('../../models/pokemon.model');
+const { getAllPokemons, getPokemonById, create, updatePokemon, deletePokemon, getPokemonByName, getPokemonByType } = require('../../models/pokemon.model');
 
 const router = require('express').Router();
 
+/* GET */
 // Recuperar todos los pokemons
 router.get('/', async (req, res) => {
     try {
@@ -23,6 +24,30 @@ router.get('/:pokemonId', async (req, res) => {
     }
 });
 
+// Recuperar los Pokemons por nombre
+router.get('/search/:name', async (req, res) => {
+    const { name } = req.params
+    try {
+        const [pokemon] = await getPokemonByName(name)
+        res.json(pokemon)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el pokemon escogido' })
+    }
+});
+
+// Recuperar Pokemons por Type
+router.get('/type/:type', async (req, res) => {
+    const { type } = req.params
+    try {
+        const [pokemonType] = await getPokemonByType(type)
+        res.json(pokemonType)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el pokemon escogido' })
+    }
+})
+
+
+/* POST */
 // Registro de Pokemon
 router.post('/create', async (req, res) => {
     try {
@@ -33,6 +58,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
+/* PUT */
 // Actualizar Pokemon
 router.put('/:pokemonId', async (req, res) => {
     const { pokemonId } = req.params
@@ -44,6 +70,7 @@ router.put('/:pokemonId', async (req, res) => {
     }
 });
 
+/* DELETE */
 // Eliminar Pokemon
 router.delete('/:pokemonId', async (req, res) => {
     const { pokemonId } = req.params

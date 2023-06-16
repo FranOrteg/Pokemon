@@ -8,6 +8,16 @@ const getPokemonById = (pokemonId) => {
     return db.query('SELECT * FROM Pokedex.Pokemons WHERE id = ?', [pokemonId]);
 };
 
+// Recuperar Pokemon por nombre
+const getPokemonByName = (name) => {
+    return db.query('SELECT * FROM Pokedex.Pokemons WHERE nombre = ?', [name])
+};
+
+// Recuperar Pokemon por Type
+const getPokemonByType = (type) => {
+    return db.query('SELECT * FROM Pokedex.Pokemons WHERE tipo = ?', [type])
+}
+
 // Crear un Pokemon
 const create = ({ nivel, nombre, tipo, puntosSaludActuales, puntosSaludTotales, puntosAtaqueBase, puntosDefensaBase, puntosAtaqueEspecialBase, puntosVelocidadBase, urlImage }) => {
 
@@ -28,9 +38,12 @@ const deletePokemon = (pokemonId) => {
 };
 
 
+
 module.exports = {
     getAllPokemons,
     getPokemonById,
+    getPokemonByName,
+    getPokemonByType,
     create,
     updatePokemon,
     deletePokemon

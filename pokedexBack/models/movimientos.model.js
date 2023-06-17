@@ -9,13 +9,13 @@ const getMoveById = (moveId) => {
 };
 
 // Registrar un movimiento
-const createmove = ({ nombre, poder }) => {
-    return db.query('INSERT INTO Pokedex.movimientos (nombre,poder) VALUES (?,?)', [nombre, poder])
+const createmove = ({ ataque, poder }) => {
+    return db.query('INSERT INTO Pokedex.movimientos (ataque,poder) VALUES (?,?)', [ataque, poder])
 }
 
 // Actualizar los datos del movimiento
-const updateMove = ({ nombre, poder }, moveId) => {
-    return db.query('UPDATE Pokedex.movimientos SET nombre = ?, poder = ? WHERE id = ?', [nombre, poder, moveId])
+const updateMove = ({ ataque, poder }, moveId) => {
+    return db.query('UPDATE Pokedex.movimientos SET ataque = ?, poder = ? WHERE id = ?', [ataque, poder, moveId])
 };
 
 // Borrar movimiento

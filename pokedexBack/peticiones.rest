@@ -1,6 +1,7 @@
 @Host = http://localhost:3000
 @urlPokemon = /pokemon
 @urlMovimientos = /movimientos
+@urlMisPokemons = /misPokemons
 
 ################
 ### POKEMONS ###
@@ -28,8 +29,8 @@ Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "jigglypul", 
-    "tipo": "Psiquico",
+    "nombre": "Charmander", 
+    "tipo": "Fuego",
     "puntosSaludActuales": 90, 
     "puntosSaludTotales": 100, 
     "puntosAtaqueBase": 30, 
@@ -78,21 +79,47 @@ POST {{Host}}{{urlMovimientos}}
 Content-Type: application/json
 
 {
-    "nombre": "estampida",
-    "poder": 25
+    "ataque": "Parachutes",
+    "poder": 40
 }
 
 
 ###
 // Actualizar un movimiento
-PUT  {{Host}}{{urlMovimientos}}/4
+PUT  {{Host}}{{urlMovimientos}}/1
 Content-Type: application/json
 
 {
-    "nombre": "estampida",
-    "poder": 25
+    "ataque": "kameha",
+    "poder": 30
 }
 
 ###
 // Borrar movimiento
 DELETE {{Host}}{{urlMovimientos}}/3
+
+
+###################
+### MY POKEMONS ###
+###################
+
+// Recuperar mis Pokémons con sus 4 movimientos
+GET {{Host}}{{urlMisPokemons}}
+
+###
+// Recuperar mis Pokémons con sus 4 movimientos por id
+GET {{Host}}{{urlMisPokemons}}/1
+
+### Crear mi Pokémon con sus movimientos
+
+POST {{Host}}{{urlMisPokemons}}
+Content-Type: application/json
+
+{
+    "apodo": "Char",
+    "nivelActual": 3,
+    "experiencia": 2,
+    "estado": 1,
+    "nombre": "Charmander"
+    
+}

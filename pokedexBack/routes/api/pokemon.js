@@ -44,7 +44,7 @@ router.get('/type/:type', async (req, res) => {
     } catch (error) {
         res.json({ fatal: 'No se ha podido recuperar el pokemon escogido' })
     }
-})
+});
 
 
 /* POST */

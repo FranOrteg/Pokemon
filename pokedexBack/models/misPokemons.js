@@ -63,8 +63,6 @@ const deleteMyPokemon = (pokeId, miPokeId) => {
 
 
 
-
-
 module.exports = {
     getMyPokeWithMoves,
     getMyPokeWithMovesById,

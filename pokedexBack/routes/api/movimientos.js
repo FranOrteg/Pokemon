@@ -1,6 +1,8 @@
-const { getAllMoves, getMoveById, createmove, updateMove, deleteMove } = require('../../models/movimientos.model');
+const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType } = require('../../models/movimientos.model');
 
 const router = require('express').Router();
+
+/* GET */
 
 // Recuperar todos los movimientos
 router.get('/', async (req, res) => {
@@ -22,7 +24,20 @@ router.get('/:movimientoId', async (req, res) => {
     } catch (error) {
         res.json({ fatal: 'No se ha podido recuperar el movimiento' })
     }
+});
+
+// Recuperar  movimiento  por el tipo de pokemon
+router.get('/type/:type', async (req, res) => {
+    const { type } = req.params
+    try {
+        const [moves] = await getMoveByPokeType(type)
+        res.json(moves)
+    } catch (error) {
+        res.json({ fatal: 'No se a podido recuperar los movimientos conforme al tipo de pokemon' })
+    }
 })
+
+/* POST */
 
 // Registrar nuevo movimiento
 router.post('/', async (req, res) => {
@@ -54,6 +69,7 @@ router.delete('/:moveId', async (req, res) => {
     } catch (error) {
         res.json({ fatal: 'No se ha podido borrar el movimiento' })
     }
-})
+});
+
 
 module.exports = router;

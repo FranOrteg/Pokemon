@@ -29,8 +29,8 @@ Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "Pikachu", 
-    "tipo": "Electric",
+    "nombre": "Roca", 
+    "tipo": "Fuego",
     "puntosSaludActuales": 90, 
     "puntosSaludTotales": 100, 
     "puntosAtaqueBase": 30, 
@@ -70,7 +70,7 @@ DELETE {{Host}}{{urlPokemon}}/3
 GET {{Host}}{{urlMovimientos}}
 
 ###
-// Recuperar todos los movimientos
+// Recuperar los movimientos
 GET {{Host}}{{urlMovimientos}}/1
 
 ###
@@ -98,6 +98,10 @@ Content-Type: application/json
 // Borrar movimiento
 DELETE {{Host}}{{urlMovimientos}}/3
 
+### 
+// movimientos segun el tipo de pokemon
+Get {{Host}}{{urlMovimientos}}/type/Fuego
+
 
 ###################
 ### MY POKEMONS ###
@@ -108,7 +112,7 @@ GET {{Host}}{{urlMisPokemons}}
 
 ###
 // Recuperar mis Pokémons con sus 4 movimientos por id
-GET {{Host}}{{urlMisPokemons}}/1
+GET {{Host}}{{urlMisPokemons}}/2
 
 ### 
 //Crear mi Pokémon con sus movimientos
@@ -120,13 +124,13 @@ Content-Type: application/json
     "nivelActual": 3,
     "experiencia": 2,
     "estado": 1,
-    "nombre": "Charmander"
+    "nombre": "Roca"
     
 }
 
 ###
 // Actualizar mis pokemons
-PUT {{Host}}{{urlMisPokemons}}/1
+PUT {{Host}}{{urlMisPokemons}}/2
 Content-Type: application/json
 
 {

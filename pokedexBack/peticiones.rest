@@ -29,8 +29,8 @@ Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "Charmander", 
-    "tipo": "Fuego",
+    "nombre": "Pikachu", 
+    "tipo": "Electric",
     "puntosSaludActuales": 90, 
     "puntosSaludTotales": 100, 
     "puntosAtaqueBase": 30, 
@@ -110,16 +110,33 @@ GET {{Host}}{{urlMisPokemons}}
 // Recuperar mis Pokémons con sus 4 movimientos por id
 GET {{Host}}{{urlMisPokemons}}/1
 
-### Crear mi Pokémon con sus movimientos
-
+### 
+//Crear mi Pokémon con sus movimientos
 POST {{Host}}{{urlMisPokemons}}
 Content-Type: application/json
 
 {
-    "apodo": "Char",
+    "apodo": "Bulba",
     "nivelActual": 3,
     "experiencia": 2,
     "estado": 1,
     "nombre": "Charmander"
     
 }
+
+###
+// Actualizar mis pokemons
+PUT {{Host}}{{urlMisPokemons}}/1
+Content-Type: application/json
+
+{
+  "apodo": "PiKac",
+  "nivelActual": 50,
+  "experiencia": 1000,
+  "estado": 1,
+  "movimientos": [1, 2]
+}
+
+###
+// Borrar mis pokemons
+DELETE {{Host}}{{urlMisPokemons}}/1

@@ -29,6 +29,38 @@ const createMyPoke = ({ apodo, nivelActual, experiencia, estado, nombre }) => {
                     WHERE nombre = ?`, [apodo, nivelActual, experiencia, estado, nombre]);
 };
 
+// Actualizar mis pokemons
+const updateMyPoke = ({ apodo, nivelActual, experiencia, estado, movimientos }, id) => {
+    return db.query(`UPDATE mypokemons SET apodo = ?, nivelActual = ?, experiencia = ?, estado = ?
+    WHERE id = ?`, [apodo, nivelActual, experiencia, estado, id])
+        .then(() => {
+
+            return db.query(`DELETE FROM pokemonsMovimientos WHERE mypokemons_id = ?`, [id]);
+        })
+        .then(() => {
+            const insertPromises = movimientos.map((movimientoId) => {
+                return db.query(`INSERT INTO pokemonsMovimientos (mypokemons_id, movimientos_id)
+                                VALUES (?, ?)`, [id, movimientoId]);
+            });
+            return Promise.all(insertPromises);
+        })
+        .then(() => {
+            return getMyPokeWithMovesById(id);
+        });
+};
+
+// Borrar mi Pokemon
+const deleteReferences = (miPokeId) => {
+    return db.query('DELETE FROM pokemonsMovimientos WHERE mypokemons_id = ?', [miPokeId]);
+};
+
+const deleteMyPokemon = (pokeId, miPokeId) => {
+    return deleteReferences(miPokeId)
+        .then(() => {
+            return db.query('DELETE FROM mypokemons WHERE id = ?', [pokeId]);
+        });
+};
+
 
 
 
@@ -36,5 +68,7 @@ const createMyPoke = ({ apodo, nivelActual, experiencia, estado, nombre }) => {
 module.exports = {
     getMyPokeWithMoves,
     getMyPokeWithMovesById,
-    createMyPoke
+    createMyPoke,
+    updateMyPoke,
+    deleteMyPokemon
 }

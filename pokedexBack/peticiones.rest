@@ -28,15 +28,15 @@ Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "Charmander", 
-    "tipo": "Fire",
-    "puntosSaludActuales": 160, 
-    "puntosSaludTotales": 150, 
+    "nombre": "jigglypul", 
+    "tipo": "Psiquico",
+    "puntosSaludActuales": 90, 
+    "puntosSaludTotales": 100, 
     "puntosAtaqueBase": 30, 
     "puntosDefensaBase": 90, 
-    "puntosAtaqueEspecialBase": 150,
+    "puntosAtaqueEspecialBase": 90,
     "puntosVelocidadBase": 90,
-    "urlImage": "https://img.pokemondb.net/artwork/avif/charmander.avif"
+    "urlImage": "https://img.pokemondb.net/artwork/avif/jigglypuff.avif"
 }
 
 ###
@@ -67,3 +67,32 @@ DELETE {{Host}}{{urlPokemon}}/3
 
 // Recuperar todos los movimientos
 GET {{Host}}{{urlMovimientos}}
+
+###
+// Recuperar todos los movimientos
+GET {{Host}}{{urlMovimientos}}/1
+
+###
+// Crear un movimiento
+POST {{Host}}{{urlMovimientos}}
+Content-Type: application/json
+
+{
+    "nombre": "estampida",
+    "poder": 25
+}
+
+
+###
+// Actualizar un movimiento
+PUT  {{Host}}{{urlMovimientos}}/4
+Content-Type: application/json
+
+{
+    "nombre": "estampida",
+    "poder": 25
+}
+
+###
+// Borrar movimiento
+DELETE {{Host}}{{urlMovimientos}}/3

@@ -7,6 +7,10 @@ Este proyecto es un simulador de batallas de Pokémon desarrollado con Angular, 
 Permite seleccionar dos Pokémon y simular una batalla en la que los Pokémon se atacan entre sí hasta que uno de ellos se queda sin puntos de salud. 
 El resultado de la batalla, es decir, el Pokémon ganador, se muestra en el navegador y en el componente combate.
 
+# Requisitos
+
+Instalación DOCKERS para correr el fichero dump
+
 # Instalación
 
 Para ejecutar el proyecto de forma local, sigue estos pasos:
@@ -16,8 +20,6 @@ Clona este repositorio en tu máquina local o descárgalo como archivo ZIP.
 Abre una terminal en la carpeta raíz del proyecto se encuentre una carperta con la parte del Cliente y otra con la del Servidor.
 
 # CLIENTE (PokedexFront):
-
-Para esta Parte tendremos que tener instalado DOCKERS para correr la base de datos MySQL
 
 Entra la carpeta del cliente y Ejecuta el siguiente comando para instalar las dependencias del proyecto:
 
@@ -39,6 +41,8 @@ ng serve
 Abre tu navegador web y ve a http://localhost:4200/pokedex para ver la aplicación en funcionamiento.
 
 # SERVIDOR (PokedexBack):
+
+Para esta Parte tendremos que tener instalado DOCKERS para correr la base de datos MySQL
 
 Entra en la carpeta del Servidor y ejecuta los siguientes comandos:
 

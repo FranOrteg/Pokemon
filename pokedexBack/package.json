@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "database-dump": "mysqldump -u root  -p Pokedex > dump.sql",
+    "database-restore": "cat ./dump.sql | docker exec -i mysql  /usr/bin/mysql -u root --password=password",
+    "database-start": "docker run --name mysql -p 3307:3306 --rm -e MYSQL_ROOT_PASSWORD=password -d mysql:latest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

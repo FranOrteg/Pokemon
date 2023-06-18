@@ -9,10 +9,12 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokedexComponent {
 
   arrPokemons: any[]
+  pokemonSelected: any[]
 
   constructor(
     private pokeService: PokemonService,
   ) {
+    this.pokemonSelected = []
     this.arrPokemons = []
   };
 
@@ -57,17 +59,17 @@ export class PokedexComponent {
     }
   }
 
-  /* async pokeSelected(pokeId: number) {
+  async pokeSelected(pokeId: number) {
     try {
       console.log(pokeId)
-      let poke = await this.pokeService.getPokemonById(pokeId)
+      let poke = await this.pokeService.getPokeBaseAndMoves(pokeId)
       this.pokemonSelected.push(poke)
-      this.pokeData.setSelectPokemon(this.pokemonSelected)
+      this.pokeService.setSelectPokemon(this.pokemonSelected)
       console.log(this.pokemonSelected);
     } catch (error) {
       console.log('error', error)
     }
-  } */
+  }
 
   async createPokemon($event: any) {
     let data = $event

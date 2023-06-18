@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PokemonComponent } from '../pokemon/pokemon.component';
 import { Pokemon } from 'src/app/interfaces/pokemon';
 import { MovimientoComponent } from '../movimiento/movimiento.component';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-combate',
@@ -11,8 +12,10 @@ import { MovimientoComponent } from '../movimiento/movimiento.component';
 export class CombateComponent {
 
   pokemon: Pokemon
+  @Input() selectePokemon: any[]
 
-  constructor() {
+  constructor(private pokeService: PokemonService) {
+    this.selectePokemon = this.pokeService.selectedPokemon
     this.pokemon = {
       nivel: 0,
       nombre: '',

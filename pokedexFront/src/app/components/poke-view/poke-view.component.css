@@ -1,0 +1,20 @@
+body {
+    background: #605e5e;
+    padding-bottom: 8rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    margin: 0 auto;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: flex;
+}
+
+span {
+    color: goldenrod;
+}

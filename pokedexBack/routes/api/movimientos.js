@@ -1,4 +1,4 @@
-const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType, getPossibleMoves, getPokeListByMoves, getPokeListByMoveName } = require('../../models/movimientos.model');
+const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType, getPossibleMoves, getPokeListByMoves, getPokeListByMoveName, getPokeWithmoves } = require('../../models/movimientos.model');
 
 const router = require('express').Router();
 
@@ -70,6 +70,17 @@ router.get('/move/name/:name', async (req, res) => {
         res.json({ fatal: 'No se ha podido recuperar el movimiento' })
     }
 });
+
+// obtener los movimientos de los pokemons por el Id
+router.get('/pokemove/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const [poke] = await getPokeWithmoves(id)
+        res.json(poke)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el pokemon' })
+    }
+})
 
 /* POST */
 

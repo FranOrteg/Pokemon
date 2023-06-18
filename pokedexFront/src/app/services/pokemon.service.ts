@@ -8,8 +8,10 @@ import { firstValueFrom } from 'rxjs';
 export class PokemonService {
 
   baseUrl: string = 'http://localhost:3000'
+  selectedPokemon: any[]
 
   constructor(private httpClient: HttpClient) {
+    this.selectedPokemon = []
   }
 
 
@@ -40,6 +42,16 @@ export class PokemonService {
   RegisterPokemon(formulario: any) {
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/pokemon/create`, formulario)
+    )
+  }
+
+  setSelectPokemon(pokemon: any) {
+    this.selectedPokemon = pokemon
+  }
+
+  getPokeBaseAndMoves(pid: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/movimientos/pokemove/${pid}`)
     )
   }
 }

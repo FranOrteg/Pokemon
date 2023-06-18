@@ -1,1 +1,18 @@
 <p>combate works!</p>
+
+<section>
+    <div class="container">
+
+        <div *ngFor="let poke of selectePokemon">
+            <div class="pokemon" style="width: 18rem;">
+                <img [src]="poke[0].urlImage" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{poke[0].nombre}}</h5>
+                    <p class="card-text">{{poke[0].tipo}}</p>
+                    <p class="card-text">{{poke[0].nivel}}</p>
+                    <p class="card-text">{{poke[0].puntosSaludActuales}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

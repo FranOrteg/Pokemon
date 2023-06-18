@@ -20,7 +20,7 @@ GET {{Host}}{{urlPokemon}}/search/Pikachu
 
 ###
 // Recuperar pokemon por Type
-GET {{Host}}{{urlPokemon}}/type/Fire
+GET {{Host}}{{urlPokemon}}/type/Fuego
 
 ###
 // Registro pokemon
@@ -29,26 +29,26 @@ Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "jugglypuff", 
-    "tipo": "Hada",
+    "nombre": "pidgeot", 
+    "tipo": "Flying",
     "puntosSaludActuales": 90, 
     "puntosSaludTotales": 100, 
     "puntosAtaqueBase": 30, 
     "puntosDefensaBase": 90, 
     "puntosAtaqueEspecialBase": 90,
     "puntosVelocidadBase": 90,
-    "urlImage": "https://img.pokemondb.net/artwork/avif/jigglypuff.avif"
+    "urlImage": "https://img.pokemondb.net/artwork/avif/pidgeot.avif"
 }
 
 ###
 // Acualizar Pokemon
-PUT {{Host}}{{urlPokemon}}/1
+PUT {{Host}}{{urlPokemon}}/3
 Content-Type: application/json
 
 {
     "nivel": 70, 
     "nombre": "Bulbasur", 
-    "tipo": "Water",
+    "tipo": "Agua",
     "puntosSaludActuales": 110, 
     "puntosSaludTotales": 150, 
     "puntosAtaqueBase": 70, 
@@ -60,7 +60,7 @@ Content-Type: application/json
 
 ###
 // Borrar pokemon
-DELETE {{Host}}{{urlPokemon}}/3
+DELETE {{Host}}{{urlPokemon}}/9
 
 
 
@@ -82,7 +82,7 @@ POST {{Host}}{{urlMovimientos}}
 Content-Type: application/json
 
 {
-    "ataque": "Bubbles",
+    "ataque": "Keen Eye",
     "poder": 40
 }
 
@@ -94,7 +94,7 @@ Content-Type: application/json
 
 {
     "ataque": "Parachutes",
-    "poder": 30
+    "poder": 50
 }
 
 ###
@@ -141,11 +141,11 @@ POST {{Host}}{{urlMisPokemons}}
 Content-Type: application/json
 
 {
-    "apodo": "Bulba",
+    "apodo": "Pika",
     "nivelActual": 3,
     "experiencia": 2,
     "estado": 1,
-    "nombre": "Bulbasur"
+    "nombre": "Pikachu"
     
 }
 
@@ -155,7 +155,7 @@ PUT {{Host}}{{urlMisPokemons}}/2
 Content-Type: application/json
 
 {
-  "apodo": "PiKac",
+  "apodo": "PiKa",
   "nivelActual": 50,
   "experiencia": 1000,
   "estado": 1,
@@ -164,4 +164,4 @@ Content-Type: application/json
 
 ###
 // Borrar mis pokemons
-DELETE {{Host}}{{urlMisPokemons}}/1
+DELETE {{Host}}{{urlMisPokemons}}/2

@@ -38,7 +38,15 @@ export class PokeViewComponent {
     })
   }
 
-  onSubmit() {
-    console.log(this.moveForm.value)
+  async onSubmit() {
+    console.log(this.pokemon);
+    const data = this.moveForm.value
+    try {
+      const response = await this.pokeService.registerMoves(data)
+      console.log(response);
+      this.moveForm.reset()
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 }

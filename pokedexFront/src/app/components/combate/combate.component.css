@@ -1,0 +1,49 @@
+.titulo {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+body {
+    background: #605e5e;
+}
+
+.pokemonList {
+    padding-bottom: 5rem;
+}
+
+.card {
+    background: darkgray;
+    cursor: pointer;
+    max-width: 200px;
+    margin-bottom: 5rem;
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    color: #107184;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10rem;
+}
+
+.ganador {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+span {
+    color: aqua;
+}

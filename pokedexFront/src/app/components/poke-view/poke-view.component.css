@@ -10,11 +10,25 @@ body {
 
 img {
     margin: 0 auto;
-    padding-top: 5rem;
+    padding-top: 1rem;
     padding-bottom: 5rem;
     display: flex;
 }
 
 span {
     color: goldenrod;
+}
+
+.enlace {
+    padding-top: 3rem;
+    padding-left: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: aqua;
 }

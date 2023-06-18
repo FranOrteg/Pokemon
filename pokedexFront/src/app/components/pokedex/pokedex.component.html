@@ -13,9 +13,10 @@
             <div id="pokemons" class="container mt-5">
                 <img src="../../../assets/images/pngwing.com.png" class="img-fluid" alt="...">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div [routerLink]="['/pokemon',poke.id]" class="col" *ngFor="let poke of arrPokemons">
+                    <div class="col" *ngFor="let poke of arrPokemons">
                         <div class="card rounded-4">
-                            <img [src]="poke.urlImage" class="card-img-top rounded-top-4">
+                            <img [src]="poke.urlImage" class="card-img-top rounded-top-4"
+                                [routerLink]="['/pokemon',poke.id]">
 
                             <div class="card-body">
                                 <h5 class="card-title">{{poke.nombre}}</h5>

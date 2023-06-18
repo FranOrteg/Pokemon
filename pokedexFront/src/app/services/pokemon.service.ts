@@ -53,5 +53,11 @@ export class PokemonService {
     return firstValueFrom(
       this.httpClient.get<any>(`${this.baseUrl}/movimientos/pokemove/${pid}`)
     )
+  };
+
+  registerMoves(formulario: any) {
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/movimientos`, formulario)
+    )
   }
 }

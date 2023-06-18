@@ -12,7 +12,9 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class CombateComponent {
 
   pokemon: Pokemon
-  @Input() selectePokemon: any[]
+  @Input() selectePokemon: Pokemon[][] = []
+  pokemonGanador: string | null = null;
+
 
   constructor(private pokeService: PokemonService) {
     this.selectePokemon = this.pokeService.selectedPokemon
@@ -32,6 +34,58 @@ export class CombateComponent {
       rival: null
     }
   }
+
+
+  iniciarCombate(): void {
+    if (this.selectePokemon.length < 2) {
+      console.log('Debes seleccionar al menos 2 Pokémon para iniciar el combate.');
+      return;
+    }
+
+    const pokemon1 = this.selectePokemon[0][0];
+    const pokemon2 = this.selectePokemon[1][0];
+
+    for (let turno = 1; turno <= 100; turno++) {
+      let atacante: Pokemon;
+      let defensor: Pokemon;
+
+      if (turno % 2 === 1) {
+        atacante = pokemon1;
+        defensor = pokemon2;
+      } else {
+        atacante = pokemon2;
+        defensor = pokemon1;
+      }
+
+      const daño = this.calcularDaño(atacante, defensor);
+      defensor.puntosSaludActuales -= daño;
+
+      console.log(`${atacante.nombre} ataca a ${defensor.nombre} y causa ${daño} puntos de daño.`);
+
+      if (pokemon1.puntosSaludActuales <= 0 || pokemon2.puntosSaludActuales <= 0) {
+        break;
+      }
+    }
+
+    if (pokemon1.puntosSaludActuales <= 0 && pokemon2.puntosSaludActuales <= 0) {
+      console.log('¡El combate ha terminado en empate!');
+      this.pokemonGanador = null
+    } else if (pokemon1.puntosSaludActuales <= 0) {
+      console.log(`${pokemon2.nombre} ha ganado el combate.`);
+      this.pokemonGanador = pokemon2.nombre
+    } else {
+      console.log(`${pokemon1.nombre} ha ganado el combate.`);
+      this.pokemonGanador = pokemon1.nombre
+    }
+  }
+
+
+  calcularDaño(atacante: Pokemon, defensor: Pokemon): number {
+    const daño = atacante.puntosAtaqueBase - defensor.puntosDefensaBase;
+    return daño > 0 ? daño : 0;
+  }
+
+
 }
 
 // Creamos instancias de los pokemon para simular un combate
@@ -84,3 +138,6 @@ const indiceTipoPropio = pokemon1.obtenerIndiceTipo(pokemon1.tipo);
 const indiceTipoRival = pokemon2.obtenerIndiceTipo(pokemon2.tipo);
 console.log('Índice del tipo:', indiceTipoPropio);
 console.log('Índice del tipo:', indiceTipoRival);
+
+/* COMBAT */
+

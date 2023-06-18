@@ -29,7 +29,7 @@ const getMoveByPokeType = (pokeType) => {
                     FROM movimientos AS M
                     JOIN pokemonsMovimientos AS pm ON pm.movimientos_id = M.id
                     JOIN mypokemons AS myP ON myP.id = pm.mypokemons_id
-                    JOIN pokemons AS P ON P.id = myP.Pokemons_id
+                    JOIN Pokemons AS P ON P.id = myP.Pokemons_id
                     WHERE P.tipo = ?
                     GROUP BY P.tipo, P.nombre;`, [pokeType])
 };
@@ -56,7 +56,7 @@ const getPokeListByMoves = (moveId) => {
 const getPokeListByMoveName = (moveName) => {
     return db.query(`SELECT DISTINCT pb.id, pb.nombre, m.ataque
                     FROM Pokemons AS pb
-                    JOIN PokeMoves AS pm ON pb.id = pm.pokemons_id
+                    JOIN Pokemoves AS pm ON pb.id = pm.pokemons_id
                     JOIN movimientos AS m ON pm.movimientos_id = m.id
                     WHERE m.ataque = ?;`, [moveName])
 };

@@ -1,5 +1,9 @@
 <body>
     <main>
+        <div class="enlace">
+
+            <a [routerLink]="['/pokedex']">POKEDEX</a>
+        </div>
         <section>
             <img class="img-fluid" src="../../../assets/images/pngwing.com.png">
             <div class="container">
@@ -20,7 +24,32 @@
                                     <p>{{poke.ataques}}</p>
                                     <h5><span>Daño</span></h5>
                                     <p>{{poke.poderes}}</p>
-                                    <button class="btn btn-info">Movimientos</button>
+                                    <button class="btn btn-info" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Movimientos</button>
+
+                                    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop"
+                                        aria-labelledby="offcanvasTopLabel">
+                                        <div class="offcanvas-header">
+                                            <h5 class="offcanvas-title" id="offcanvasTopLabel">CREA LOS MOVIMIENTOS</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <form [formGroup]="moveForm" (ngSubmit)="onSubmit()">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Ataque</label>
+                                                    <input type="text" class="form-control" formControlName="ataque">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Poder</label>
+                                                    <input type="text" class="form-control" formControlName="poder">
+                                                </div>
+                                                <button type="submit" class="btn btn-info">Crear</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -28,31 +57,5 @@
                 </div>
             </div>
         </section>
-
-        <button class="btn btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
-            aria-controls="offcanvasTop">Movimientos</button>
-
-        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasTopLabel">CREA LOS MOVIMIENTOS</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <form [formGroup]="moveForm" (ngSubmit)="onSubmit()">
-                    <div class="mb-3">
-                        <label class="form-label">Ataque</label>
-                        <input type="text" class="form-control" formControlName="ataque">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Poder</label>
-                        <input type="text" class="form-control" formControlName="poder">
-                    </div>
-                    <button type="submit" class="btn btn-info">Crear</button>
-                </form>
-
-            </div>
-        </div>
-
     </main>
 </body>

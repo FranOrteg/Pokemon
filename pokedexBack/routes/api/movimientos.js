@@ -1,4 +1,4 @@
-const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType } = require('../../models/movimientos.model');
+const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType, getPossibleMoves, getPokeListByMoves, getPokeListByMoveName } = require('../../models/movimientos.model');
 
 const router = require('express').Router();
 
@@ -35,7 +35,41 @@ router.get('/type/:type', async (req, res) => {
     } catch (error) {
         res.json({ fatal: 'No se a podido recuperar los movimientos conforme al tipo de pokemon' })
     }
-})
+});
+
+
+// Obtener todos los movimientos posibles de un pokemon
+router.get('/possible/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const [moves] = await getPossibleMoves(id)
+        res.json(moves)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el movimiento' })
+    }
+});
+
+// Obtener una lista de pokemons que comparten el mismo movimiento
+router.get('/move/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const [list] = await getPokeListByMoves(id)
+        res.json(list)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el movimiento' })
+    }
+});
+
+// Obtener una lista de pokemons que comparten el mismo movimiento por el nombre
+router.get('/move/name/:name', async (req, res) => {
+    const { name } = req.params
+    try {
+        const [list] = await getPokeListByMoveName(name)
+        res.json(list)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el movimiento' })
+    }
+});
 
 /* POST */
 

@@ -29,8 +29,8 @@ Content-Type: application/json
 
 {
     "nivel": 100, 
-    "nombre": "Roca", 
-    "tipo": "Fuego",
+    "nombre": "jugglypuff", 
+    "tipo": "Hada",
     "puntosSaludActuales": 90, 
     "puntosSaludTotales": 100, 
     "puntosAtaqueBase": 30, 
@@ -79,18 +79,18 @@ POST {{Host}}{{urlMovimientos}}
 Content-Type: application/json
 
 {
-    "ataque": "Parachutes",
+    "ataque": "Bubbles",
     "poder": 40
 }
 
 
 ###
 // Actualizar un movimiento
-PUT  {{Host}}{{urlMovimientos}}/1
+PUT  {{Host}}{{urlMovimientos}}/3
 Content-Type: application/json
 
 {
-    "ataque": "kameha",
+    "ataque": "Parachutes",
     "poder": 30
 }
 
@@ -100,7 +100,19 @@ DELETE {{Host}}{{urlMovimientos}}/3
 
 ### 
 // movimientos segun el tipo de pokemon
-Get {{Host}}{{urlMovimientos}}/type/Fuego
+GET  {{Host}}{{urlMovimientos}}/type/Fuego
+
+###
+// movimientos posibles de un pokemon
+GET {{Host}}{{urlMovimientos}}/possible/1
+
+###
+// Obtener una lista de pokemons que comparten el mismo movimiento
+GET  {{Host}}{{urlMovimientos}}/move/1
+
+###
+// Obtener una lista de pokemons que comparten el mismo movimiento por el nombre
+GET {{Host}}{{urlMovimientos}}/move/name/Bubbles
 
 
 ###################
@@ -112,7 +124,7 @@ GET {{Host}}{{urlMisPokemons}}
 
 ###
 // Recuperar mis Pokémons con sus 4 movimientos por id
-GET {{Host}}{{urlMisPokemons}}/2
+GET {{Host}}{{urlMisPokemons}}/1
 
 ### 
 //Crear mi Pokémon con sus movimientos
@@ -124,7 +136,7 @@ Content-Type: application/json
     "nivelActual": 3,
     "experiencia": 2,
     "estado": 1,
-    "nombre": "Roca"
+    "nombre": "Bulbasur"
     
 }
 

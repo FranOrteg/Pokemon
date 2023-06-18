@@ -32,6 +32,33 @@ const getMoveByPokeType = (pokeType) => {
                     JOIN pokemons AS P ON P.id = myP.Pokemons_id
                     WHERE P.tipo = ?
                     GROUP BY P.tipo, P.nombre;`, [pokeType])
+};
+
+// Obtener todos los movimientos posibles de un pokemon
+const getPossibleMoves = (pokeId) => {
+    return db.query(`SELECT M.*
+                    FROM movimientos AS M
+                    JOIN pokemonsMovimientos AS pm ON pm.movimientos_id = M.id
+                    JOIN mypokemons AS myP ON myP.id = pm.mypokemons_id
+                    WHERE myP.Pokemons_id = ?`, [pokeId])
+};
+
+// mostrar una lista de los pokémons que comparten un mismo movimiento
+const getPokeListByMoves = (moveId) => {
+    return db.query(`SELECT pb.id, pb.nombre, m.ataque
+                    FROM Pokemons AS pb
+                    JOIN Pokemoves AS phm ON pb.id = phm.pokemons_id
+                    JOIN movimientos AS m ON phm.movimientos_id = m.id
+                    WHERE m.id = ?;`, [moveId])
+}
+
+// mostrar una lista de pokemons por el nombre de movimiento
+const getPokeListByMoveName = (moveName) => {
+    return db.query(`SELECT DISTINCT pb.id, pb.nombre, m.ataque
+                    FROM Pokemons AS pb
+                    JOIN PokeMoves AS pm ON pb.id = pm.pokemons_id
+                    JOIN movimientos AS m ON pm.movimientos_id = m.id
+                    WHERE m.ataque = ?;`, [moveName])
 }
 
 module.exports = {
@@ -40,5 +67,8 @@ module.exports = {
     createmove,
     updateMove,
     deleteMove,
-    getMoveByPokeType
+    getMoveByPokeType,
+    getPossibleMoves,
+    getPokeListByMoves,
+    getPokeListByMoveName
 }

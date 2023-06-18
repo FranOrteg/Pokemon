@@ -7,7 +7,7 @@ Este proyecto es un simulador de batallas de Pokémon desarrollado con Angular, 
 Permite seleccionar dos Pokémon y simular una batalla en la que los Pokémon se atacan entre sí hasta que uno de ellos se queda sin puntos de salud. 
 El resultado de la batalla, es decir, el Pokémon ganador, se muestra en el navegador y en el componente combate.
 
-Instalación
+# Instalación
 
 Para ejecutar el proyecto de forma local, sigue estos pasos:
 
@@ -65,7 +65,7 @@ Para levantar el servidor:
 npm run dev
 ```
 
-Uso
+# Uso
 
 En la página de inicio, se muestran los todos Pokémon disponibles para seleccionar.
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MovimientoComponent } from '../movimiento/movimiento.component';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon',
@@ -111,6 +112,9 @@ export class PokemonComponent {
       console.log('Valor no valido')
     }
     return indice
-  }
+  };
+
 
 }
+
+

@@ -1,0 +1,82 @@
+<section class="header">
+    <nav>
+        <form [formGroup]="searchForm" (ngSubmit)="getData()">
+            <div class="container">
+
+
+                <div class="buscador d-flex justify-content-between">
+                    <div class="search">
+                        <input type="text" class="form-control" placeholder="Enter name" formControlName="nombre">
+                        <button type="submit" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <button type="button" class="btn btn-info" (click)="getAll()">Poke</button>
+                    <button class="btn btn-info" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">CREATE</button>
+                    <div class="select">
+                        <select class="form-select" aria-label="Default select example" (change)="getType()"
+                            formControlName="tipo">
+                            <option value="" disabled selected>Pokemon Type</option>
+                            <option *ngFor="let type of getUniqueTypes(pokemons)" [value]="type">{{ type }}</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">CREA TU POKEMON</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+
+                    <div class="offcanvas-body">
+                        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-3">
+                                <label class="form-label">Nivel</label>
+                                <input type="text" class="form-control" formControlName="nivel">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control" formControlName="nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">tipo</label>
+                                <input type="text" class="form-control" formControlName="tipo">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">puntos Salud Actuales</label>
+                                <input type="text" class="form-control" formControlName="puntosSaludActuales">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">puntos Salud Totales</label>
+                                <input type="text" class="form-control" formControlName="puntosSaludTotales">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">puntos Ataque Base</label>
+                                <input type="text" class="form-control" formControlName="puntosAtaqueBase">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">puntos Defensa Base</label>
+                                <input type="text" class="form-control" formControlName="puntosDefensaBase">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Puntos Ataque Especial Base</label>
+                                <input type="text" class="form-control" formControlName="puntosAtaqueEspecialBase">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">puntos Velocidad Base</label>
+                                <input type="text" class="form-control" formControlName="puntosVelocidadBase">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">urlImage</label>
+                                <input type="text" class="form-control" formControlName="urlImage">
+                            </div>
+                            <button type="submit" class="btn btn-info">Crear</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </nav>
+</section>

@@ -1,0 +1,36 @@
+<body>
+
+    <header>
+        <app-header (nameEmitted)="getPokemons($event)" (typeEmitted)="getPokemonType($event)"
+            (AllEmitted)="getAllPoke()" [pokemons]="arrPokemons" (FormEmitted)="createPokemon($event)">
+
+        </app-header>
+    </header>
+
+
+    <main>
+        <section class="pokemonList">
+            <div id="pokemons" class="container mt-5">
+                <img src="../../../assets/images/pngwing.com.png" class="img-fluid" alt="...">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" *ngFor="let poke of arrPokemons">
+                        <div class="card rounded-4">
+                            <img [src]="poke.urlImage" class="card-img-top rounded-top-4">
+                            <hr>
+                            <div class="card-body">
+                                <h5 class="card-title">{{poke.nombre}}</h5>
+                                <p class="card-text">Clase: {{poke.tipo}}</p>
+                                <p class="card-text">Nivel: {{poke.nivel}}</p>
+                                <p class="card-text">Salud: {{poke.puntosSaludTotales}}</p>
+                                <!-- <div class="d-flex gap-2 justify-content-end">
+                                    <input type="checkbox" (click)="pokeSelected(poke.id)">
+                                    <label>Select</label>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

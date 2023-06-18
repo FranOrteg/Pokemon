@@ -1,0 +1,35 @@
+.search {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.botones {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: end;
+}
+
+.form-control {
+    background: #605e5e;
+    border: 2px solid #32d2f2;
+    color: white;
+
+}
+
+::placeholder {
+    color: white;
+}
+
+.offcanvas {
+    background: #605e5e;
+    color: white;
+}
+
+/* Medias */
+@media (max-width: 765px) {
+    .buscador {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

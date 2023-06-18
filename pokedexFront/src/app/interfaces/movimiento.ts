@@ -1,4 +1,4 @@
 export interface Movimiento {
-    nombre: string;
+    ataque: string;
     poder: number;
 }

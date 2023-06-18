@@ -9,6 +9,7 @@ export interface Pokemon {
     puntosAtaqueEspecialBase: number;
     puntosDefensaEspecialBase: number;
     puntosVelocidadBase: number;
+    urlImage: string;
     movimientos: string[];
     rival: Pokemon | null
 }

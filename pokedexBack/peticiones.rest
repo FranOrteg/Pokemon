@@ -100,11 +100,11 @@ DELETE {{Host}}{{urlMovimientos}}/3
 
 ### 
 // movimientos segun el tipo de pokemon
-GET  {{Host}}{{urlMovimientos}}/type/Fuego
+GET  {{Host}}{{urlMovimientos}}/type/Agua
 
 ###
 // movimientos posibles de un pokemon
-GET {{Host}}{{urlMovimientos}}/possible/1
+GET {{Host}}{{urlMovimientos}}/possible/3
 
 ###
 // Obtener una lista de pokemons que comparten el mismo movimiento

@@ -15,7 +15,7 @@ Clona este repositorio en tu máquina local o descárgalo como archivo ZIP.
 
 Abre una terminal en la carpeta raíz del proyecto se encuentre una carperta con la parte del Cliente y otra con la del Servidor.
 
-En la parte del CLIENTE (PokedexFront):
+# CLIENTE (PokedexFront):
 
 Para esta Parte tendremos que tener instalado DOCKERS para correr la base de datos MySQL
 
@@ -38,7 +38,7 @@ ng serve
  
 Abre tu navegador web y ve a http://localhost:4200/pokedex para ver la aplicación en funcionamiento.
 
-En la parte del SERVIDOR (PokedexBack):
+# SERVIDOR (PokedexBack):
 
 Entra en la carpeta del Servidor y ejecuta los siguientes comandos:
 

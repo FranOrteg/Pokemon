@@ -81,7 +81,7 @@ export class CombateComponent {
 
 
   calcularDaño(atacante: Pokemon, defensor: Pokemon): number {
-    const daño = atacante.puntosAtaqueBase - defensor.puntosDefensaBase;
+    const daño = pokemon1.calcularDaño(pokemon1, movimiento, pokemon2)
     return daño > 0 ? daño : 0;
   }
 

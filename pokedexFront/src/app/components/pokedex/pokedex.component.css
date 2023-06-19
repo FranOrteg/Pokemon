@@ -1,0 +1,29 @@
+#pokemons img {
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    display: flex;
+}
+
+header {
+    padding-top: 2rem;
+}
+
+body {
+    background: #605e5e;
+}
+
+.pokemonList {
+    padding-bottom: 5rem;
+}
+
+.card {
+    background: darkgray;
+    cursor: pointer;
+}
+
+.card-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    color: #107184;
+}

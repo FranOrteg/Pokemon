@@ -1,0 +1,61 @@
+<body>
+    <main>
+        <div class="enlace">
+
+            <a [routerLink]="['/pokedex']">POKEDEX</a>
+        </div>
+        <section>
+            <img class="img-fluid" src="../../../assets/images/pngwing.com.png">
+            <div class="container">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0" *ngFor="let poke of pokemon">
+                        <div class="col-md-4">
+                            <img [src]="poke.urlImage" class="img-fluid rounded-start">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h1 class="card-title">{{poke.nombre}}</h1>
+                                <hr>
+                                <h3 class="card-subtitle">Categoria:</h3>
+                                <p>{{poke.tipo}}</p>
+                                <h3>Movimientos</h3>
+                                <div class="movimientos">
+                                    <h5><span>Ataques</span></h5>
+                                    <p>{{poke.ataques}}</p>
+                                    <h5><span>Daño</span></h5>
+                                    <p>{{poke.poderes}}</p>
+                                    <button class="btn btn-info" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Movimientos</button>
+
+                                    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop"
+                                        aria-labelledby="offcanvasTopLabel">
+                                        <div class="offcanvas-header">
+                                            <h5 class="offcanvas-title" id="offcanvasTopLabel">CREA LOS MOVIMIENTOS</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            <form [formGroup]="moveForm" (ngSubmit)="onSubmit()">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Ataque</label>
+                                                    <input type="text" class="form-control" formControlName="ataque">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Poder</label>
+                                                    <input type="text" class="form-control" formControlName="poder">
+                                                </div>
+                                                <button type="submit" class="btn btn-info">Crear</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

@@ -1,0 +1,167 @@
+@Host = http://localhost:3000
+@urlPokemon = /pokemon
+@urlMovimientos = /movimientos
+@urlMisPokemons = /misPokemons
+
+################
+### POKEMONS ###
+################
+
+// Recuperar todos los pokemons
+GET {{Host}}{{urlPokemon}}
+
+###
+// Recuperar pokemon por Id
+GET {{Host}}{{urlPokemon}}/1
+
+###
+// Recuperar pokemon por nombre
+GET {{Host}}{{urlPokemon}}/search/Pikachu
+
+###
+// Recuperar pokemon por Type
+GET {{Host}}{{urlPokemon}}/type/Fuego
+
+###
+// Registro pokemon
+POST {{Host}}{{urlPokemon}}/create
+Content-Type: application/json
+
+{
+    "nivel": 100, 
+    "nombre": "pidgeot", 
+    "tipo": "Flying",
+    "puntosSaludActuales": 90, 
+    "puntosSaludTotales": 100, 
+    "puntosAtaqueBase": 30, 
+    "puntosDefensaBase": 90, 
+    "puntosAtaqueEspecialBase": 90,
+    "puntosVelocidadBase": 90,
+    "urlImage": "https://img.pokemondb.net/artwork/avif/pidgeot.avif"
+}
+
+###
+// Acualizar Pokemon
+PUT {{Host}}{{urlPokemon}}/3
+Content-Type: application/json
+
+{
+    "nivel": 70, 
+    "nombre": "Bulbasur", 
+    "tipo": "Agua",
+    "puntosSaludActuales": 110, 
+    "puntosSaludTotales": 150, 
+    "puntosAtaqueBase": 70, 
+    "puntosDefensaBase": 90, 
+    "puntosAtaqueEspecialBase": 120,
+    "puntosVelocidadBase": 30,
+    "urlImage": "https://img.pokemondb.net/artwork/avif/bulbasaur.avif"
+}
+
+###
+// Borrar pokemon
+DELETE {{Host}}{{urlPokemon}}/9
+
+
+
+
+###################
+### MOVIMIENTOS ###
+###################
+
+// Recuperar todos los movimientos
+GET {{Host}}{{urlMovimientos}}
+
+###
+// Recuperar los movimientos
+GET {{Host}}{{urlMovimientos}}/1
+
+###
+// Crear un movimiento
+POST {{Host}}{{urlMovimientos}}
+Content-Type: application/json
+
+{
+    "ataque": "Keen Eye",
+    "poder": 40
+}
+
+
+###
+// Actualizar un movimiento
+PUT  {{Host}}{{urlMovimientos}}/3
+Content-Type: application/json
+
+{
+    "ataque": "Parachutes",
+    "poder": 50
+}
+
+###
+// Borrar movimiento
+DELETE {{Host}}{{urlMovimientos}}/3
+
+### 
+// movimientos segun el tipo de pokemon
+GET  {{Host}}{{urlMovimientos}}/type/Agua
+
+###
+// movimientos posibles de un pokemon
+GET {{Host}}{{urlMovimientos}}/possible/3
+
+###
+// Obtener una lista de pokemons que comparten el mismo movimiento
+GET  {{Host}}{{urlMovimientos}}/move/1
+
+###
+// Obtener una lista de pokemons que comparten el mismo movimiento por el nombre
+GET {{Host}}{{urlMovimientos}}/move/name/Bubbles
+
+### 
+//Recuperar un pokemon y sus movimientos
+GET {{Host}}{{urlMovimientos}}/pokemove/2
+
+
+
+
+###################
+### MY POKEMONS ###
+###################
+
+// Recuperar mis Pokémons con sus 4 movimientos
+GET {{Host}}{{urlMisPokemons}}
+
+###
+// Recuperar mis Pokémons con sus 4 movimientos por id
+GET {{Host}}{{urlMisPokemons}}/1
+
+### 
+//Crear mi Pokémon con sus movimientos
+POST {{Host}}{{urlMisPokemons}}
+Content-Type: application/json
+
+{
+    "apodo": "we",
+    "nivelActual": 3,
+    "experiencia": 2,
+    "estado": 1,
+    "nombre": "weedle"
+    
+}
+
+###
+// Actualizar mis pokemons
+PUT {{Host}}{{urlMisPokemons}}/2
+Content-Type: application/json
+
+{
+  "apodo": "PiKa",
+  "nivelActual": 50,
+  "experiencia": 1000,
+  "estado": 1,
+  "movimientos": [1, 2]
+}
+
+###
+// Borrar mis pokemons
+DELETE {{Host}}{{urlMisPokemons}}/2

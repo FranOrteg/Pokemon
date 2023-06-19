@@ -141,11 +141,11 @@ POST {{Host}}{{urlMisPokemons}}
 Content-Type: application/json
 
 {
-    "apodo": "Pika",
+    "apodo": "we",
     "nivelActual": 3,
     "experiencia": 2,
     "estado": 1,
-    "nombre": "Pikachu"
+    "nombre": "weedle"
     
 }
 

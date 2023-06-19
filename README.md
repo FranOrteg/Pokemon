@@ -92,7 +92,7 @@ La batalla se desarrollará en la consola y el resultado, es decir, el Pokémon 
 
 ## Database
 
-![Entidad Relación Diagram](files://./Entidad_Relacion.png);
+![Entidad Relación Diagram](./Entidad_Relacion.png)
 
 
 

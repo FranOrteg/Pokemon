@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MovimientoComponent } from '../movimiento/movimiento.component';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemon } from 'src/app/interfaces/pokemon';
+import { Movimiento } from 'src/app/interfaces/movimiento';
 
 @Component({
   selector: 'app-pokemon',
@@ -13,39 +15,36 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   - 'movimientos' es un array de objetos de tipo 'MovimientoComponent' que representan los movimientos de los pokemon.
   - 'rival' es una variable que almacena al pokemon rival. puede ser Pokemon o null.   */
 export class PokemonComponent {
-  nivel: number;
-  nombre: string;
-  tipo: string;
-  puntosSaludActuales: number;
-  puntosSaludTotales: number;
-  puntosAtaqueBase: number;
-  puntosDefensaBase: number;
-  puntosAtaqueEspecialBase: number;
-  puntosDefensaEspecialBase: number;
-  puntosVelocidadBase: number;
-  movimientos: MovimientoComponent[];
-  rival: PokemonComponent | null
 
-
+  /* pokemon: Pokemon;
+  movimiento: Movimiento
+ */
   constructor() {
-    this.nivel = 0;
-    this.nombre = '';
-    this.tipo = '';
-    this.puntosSaludActuales = 0;
-    this.puntosSaludTotales = 0;
-    this.puntosAtaqueBase = 0;
-    this.puntosDefensaBase = 0;
-    this.puntosAtaqueEspecialBase = 0;
-    this.puntosDefensaEspecialBase = 0;
-    this.puntosVelocidadBase = 0;
-    this.movimientos = [];
-    this.rival = null
+    /* this.pokemon = {
+      nivel: 0,
+      nombre: '',
+      tipo: '',
+      puntosSaludActuales: 0,
+      puntosSaludTotales: 0,
+      puntosAtaqueBase: 0,
+      puntosDefensaBase: 0,
+      puntosAtaqueEspecialBase: 0,
+      puntosDefensaEspecialBase: 0,
+      puntosVelocidadBase: 0,
+      urlImage: '',
+      movimientos: [],
+      rival: null
+    }
+    this.movimiento = {
+      ataque: '',
+      poder: 0
+    } */
   }
 
   // Calcular el daño al usar un movimiento especifico.
   // Como ponia en el enunciado del ejercicio este recibe, un pokemon, un movimiento y el pokemon rival
 
-  calcularDaño(pokemonPropio: PokemonComponent, movimiento: MovimientoComponent, rival: PokemonComponent): number {
+  /* calcularDaño(pokemonPropio: Pokemon, movimiento: Movimiento, rival: Pokemon): number {
 
     // Calculamos la efectividad del movimiento del pokemon 
     const efectividad = this.obtenerEfectividad(pokemonPropio.tipo, movimiento.poder, rival.tipo);
@@ -54,8 +53,9 @@ export class PokemonComponent {
     const random = Math.floor(Math.random() * 16) + 85;
 
     // Calculamos el daño real infligido. utilizamos la formula proporcionada en el enunciado.
-    const daño = Math.floor((((2 * this.nivel / 5 + 2) * this.puntosAtaqueBase * movimiento.poder / rival.puntosDefensaBase) / 50) * efectividad * random / 100)
+    const daño = Math.floor((((2 * this.pokemon.nivel / 5 + 2) * this.pokemon.puntosAtaqueBase * movimiento.poder / rival.puntosDefensaBase) / 50) * efectividad * random / 100)
 
+    console.log('eyyyyyyy', daño);
 
     return daño
   }
@@ -113,7 +113,7 @@ export class PokemonComponent {
     }
     return indice
   };
-
+ */
 
 }
 

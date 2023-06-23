@@ -6,27 +6,23 @@
         </div>
         <div class="container">
             <div *ngFor="let poke of selectePokemon">
-                <!--  <div class="pokemon" style="width: 18rem;">
-                    <img [src]="poke[0].urlImage" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">{{poke[0].nombre}}</h5>
-                        <p class="card-text">{{poke[0].tipo}}</p>
-                        <p class="card-text">{{poke[0].nivel}}</p>
-                        <p class="card-text">{{poke[0].puntosSaludActuales}}</p>
-                    </div>
-                </div> -->
                 <div class="card rounded-4">
                     <img [src]="poke[0].urlImage" class="card-img-top rounded-top-4">
-
-                    <div class=" card-body">
+                    <div class="card-body">
                         <h5 class="card-title">{{poke[0].nombre}}</h5>
                         <p class="card-text">Clase: {{poke[0].tipo}}</p>
                         <p class="card-text">Nivel: {{poke[0].nivel}}</p>
                         <p class="card-text">Salud: {{poke[0].puntosSaludActuales}}</p>
+                        <p class="card-text">Movimientos</p>
+                        <p *ngFor="let ataq of poke" class="card-text">{{ataq.ataque}}
+                            <input type="checkbox" (click)="selectedMoves(ataq.id)">
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="ganador" *ngIf="pokemonGanador">
             <h2><span>{{ pokemonGanador }} ha ganado el combate</span></h2>
         </div>

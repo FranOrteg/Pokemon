@@ -30,7 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PokemonComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

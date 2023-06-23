@@ -60,4 +60,11 @@ export class PokemonService {
       this.httpClient.post<any>(`${this.baseUrl}/movimientos`, formulario)
     )
   }
+
+  getMoveById(pId: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/movimientos/${pId}`)
+    )
+  }
+
 }

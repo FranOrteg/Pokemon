@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PokemonComponent } from '../pokemon/pokemon.component';
 import { Pokemon } from 'src/app/interfaces/pokemon';
-import { MovimientoComponent } from '../movimiento/movimiento.component';
+import { Movimiento } from 'src/app/interfaces/movimiento';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -11,12 +11,16 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class CombateComponent {
 
-  pokemon: Pokemon
-  @Input() selectePokemon: Pokemon[][] = []
+  pokemon: Pokemon;
+  @Input() selectePokemon: any
   pokemonGanador: string | null = null;
+  selectemoves: any
 
 
-  constructor(private pokeService: PokemonService) {
+  constructor(
+    private pokeService: PokemonService,
+    private pokeComp: PokemonComponent
+  ) {
     this.selectePokemon = this.pokeService.selectedPokemon
     this.pokemon = {
       nivel: 0,
@@ -44,6 +48,9 @@ export class CombateComponent {
 
     const pokemon1 = this.selectePokemon[0][0];
     const pokemon2 = this.selectePokemon[1][0];
+    /* console.log('pokemon1', pokemon1); */
+
+
 
     for (let turno = 1; turno <= 100; turno++) {
       let atacante: Pokemon;
@@ -57,7 +64,12 @@ export class CombateComponent {
         defensor = pokemon1;
       }
 
-      const daño = this.calcularDaño(atacante, defensor);
+      // Calcular daño
+      const movimiento = this.selectemoves[0];
+      /* console.log('movimiento', movimiento);
+ */
+      const daño = this.calcularDaño(atacante, movimiento, defensor);
+      /* console.log('Daño causado:', daño); */
       defensor.puntosSaludActuales -= daño;
 
       console.log(`${atacante.nombre} ataca a ${defensor.nombre} y causa ${daño} puntos de daño.`);
@@ -79,65 +91,80 @@ export class CombateComponent {
     }
   }
 
-
-  calcularDaño(atacante: Pokemon, defensor: Pokemon): number {
-    const daño = pokemon1.calcularDaño(pokemon1, movimiento, pokemon2)
-    return daño > 0 ? daño : 0;
+  async selectedMoves(pokeId: number) {
+    let move = await this.pokeService.getMoveById(pokeId)
+    this.selectemoves = move
+    console.log(this.selectemoves)
+    return move
   }
 
+  calcularDaño(pokemonPropio: Pokemon, movimiento: Movimiento, rival: Pokemon): number {
+
+    // Calculamos la efectividad del movimiento del pokemon 
+    const efectividad = this.obtenerEfectividad(pokemonPropio.tipo, movimiento.poder, rival.tipo);
+
+    // Generamos el número aleatorio entre 85 y 100
+    const random = Math.floor(Math.random() * 16) + 85;
+
+    // Calculamos el daño real infligido. utilizamos la formula proporcionada en el enunciado.
+    const daño = Math.floor((((2 * pokemonPropio.nivel / 5 + 2) * pokemonPropio.puntosAtaqueBase * movimiento.poder / rival.puntosDefensaBase) / 50) * efectividad * random / 100)
+
+    return daño
+  }
+
+  // en esta función obtenemos la efectividad del ataque en relación con la tabla proporcionada en el enunciado.
+
+  obtenerEfectividad(tipoPropio: string, tipoAtaque: number, tipoOponente: string): number {
+
+    // Generamos una matríz con la tabla
+    const efectividadTabla = [
+      [0.5, 0.5, 1, 1, 0.5, 1, 0.5, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+      [1, 0.5, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 0.5, 1, 2, 1, 2, 1, 1],
+      [0.5, 1, 1, 1, 1, 0.5, 0.5, 0.5, 1, 0.5, 1, 2, 2, 1, 2, 1, 0.5, 0.5],
+      [0.5, 1, 1, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 2, 1, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 0, 1, 2],
+      [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0, 1, 2, 1, 0.5, 1, 1, 1],
+      [2, 0.5, 2, 0.5, 1, 1, 0.5, 1, 2, 1, 1, 2, 1, 0.5, 1, 1, 1, 1],
+      [0.5, 1, 1, 2, 1, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 2, 1, 0.5, 1],
+      [0.5, 0.5, 1, 2, 1, 1, 0.5, 1, 0.5, 1, 1, 2, 1, 1, 1, 2, 1, 2],
+      [2, 1, 0.5, 1, 1, 0, 1, 0.5, 2, 1, 2, 1, 0.5, 2, 2, 1, 0.5, 0.5],
+      [0.5, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 1],
+      [0.5, 2, 0.5, 0.5, 1, 1, 0.5, 1, 1, 1, 1, 0.5, 1, 2, 1, 2, 0.5, 0.5],
+      [0.5, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 0.5, 1, 0, 1, 2, 1],
+      [0.5, 1, 2, 1, 1, 1, 2, 1, 2, 0.5, 1, 1, 1, 1, 1, 0.5, 1, 2],
+      [1, 1, 1, 1, 1, 2, 1, 0.5, 1, 0.5, 1, 1, 2, 1, 0.5, 1, 1, 1],
+      [2, 1, 0.5, 1, 2, 1, 2, 1, 1, 1, 1, 0.5, 1, 2, 1, 1, 2, 0],
+      [0, 1, 1, 1, 1, 0.5, 1, 2, 1, 1, 1, 2, 1, 0.5, 1, 0.5, 0.5, 1],
+      [0.5, 1, 2, 1, 0.5, 1, 1, 1, 1, 2, 1, 2, 1, 0.5, 1, 1, 1, 1]
+    ]
+
+    // Obtener el indice del pokemon propio y del tipo del oponen te en la matriz
+    // Aqui obtenemos el tipo de pokemon y buscaremos su posición en la matriz
+    const indiceTipoPropio = this.obtenerIndiceTipo(tipoPropio);
+    const indiceTipoOponente = this.obtenerIndiceTipo(tipoOponente);
+
+    // Obtener el valor de la efectividad de la matriz utilizando los índices
+    const efectividad = efectividadTabla[indiceTipoPropio][indiceTipoOponente]
+
+    console.log(efectividad);
+
+    return efectividad
+  }
+
+  // Esta función recibe un tipo de pokemon como una cadena de texto y devuelve el indice correspondiente en la matriz
+
+  obtenerIndiceTipo(tipo: string) {
+
+    // Diferentes tipos segun la tabla
+    const tipos = ['Acero', 'Agua', 'Bicho', 'Dragon', 'Electrico', 'Fantasma', 'Fuego', 'Hada', 'Hielo', 'Lucha', 'Normal', 'Planta', 'Psiquico', 'Roca', 'Siniestro', 'Tierra', 'Veneno', 'Volador']
+
+    // verificamos si el valor esta en el array
+    const indice = tipos.indexOf(tipo)
+    if (indice === -1) {
+      console.log('Valor no valido')
+    }
+    return indice
+  };
 
 }
-
-// Creamos instancias de los pokemon para simular un combate
-const pokemon1 = new PokemonComponent();
-pokemon1.nivel = 50;
-pokemon1.nombre = 'Pikachu';
-pokemon1.tipo = 'Electrico';
-pokemon1.puntosSaludActuales = 100;
-pokemon1.puntosSaludTotales = 100;
-pokemon1.puntosAtaqueBase = 70;
-pokemon1.puntosDefensaBase = 50;
-pokemon1.puntosAtaqueEspecialBase = 90;
-pokemon1.puntosDefensaEspecialBase = 80;
-pokemon1.puntosVelocidadBase = 120;
-pokemon1.movimientos = [];
-
-const pokemon2 = new PokemonComponent();
-pokemon2.nivel = 45;
-pokemon2.nombre = 'Charmander';
-pokemon2.tipo = 'Fuego';
-pokemon2.puntosSaludActuales = 120;
-pokemon2.puntosSaludTotales = 120;
-pokemon2.puntosAtaqueBase = 85;
-pokemon2.puntosDefensaBase = 80;
-pokemon2.puntosAtaqueEspecialBase = 100;
-pokemon2.puntosDefensaEspecialBase = 90;
-pokemon2.puntosVelocidadBase = 100;
-pokemon2.movimientos = [];
-
-
-// Asignamos los rivales
-pokemon1.rival = pokemon2;
-pokemon2.rival = pokemon1;
-
-
-// Calcular daño
-const movimiento = new MovimientoComponent();
-movimiento.nombre = 'Movimiento1';
-movimiento.poder = 80;
-
-const daño = pokemon1.calcularDaño(pokemon1, movimiento, pokemon2);
-console.log('Daño causado:', daño);
-
-// Obtener efectividad
-const efectividad = pokemon1.obtenerEfectividad(pokemon1.tipo, movimiento.poder, pokemon2.tipo);
-console.log('efectividad', efectividad)
-
-// Obtener el índice del tipo
-const indiceTipoPropio = pokemon1.obtenerIndiceTipo(pokemon1.tipo);
-const indiceTipoRival = pokemon2.obtenerIndiceTipo(pokemon2.tipo);
-console.log('Índice del tipo:', indiceTipoPropio);
-console.log('Índice del tipo:', indiceTipoRival);
-
-/* COMBAT */
 

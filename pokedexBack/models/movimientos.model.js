@@ -62,7 +62,7 @@ const getPokeListByMoveName = (moveName) => {
 };
 
 // obtener un pokemon con sus movimientos
-const getPokeWithmoves = (pokeId) => {
+/* const getPokeWithmoves = (pokeId) => {
     return db.query(`SELECT pb.*, 
                     GROUP_CONCAT(m.ataque SEPARATOR ', ') AS ataques,
                     GROUP_CONCAT(m.poder SEPARATOR ', ') AS poderes
@@ -71,6 +71,14 @@ const getPokeWithmoves = (pokeId) => {
                     JOIN movimientos m ON m.id = pm.movimientos_id
                     WHERE pb.id = ?
                     GROUP BY pb.id, pb.nivel, pb.nombre, pb.tipo, pb.puntosSaludActuales, pb.puntosSaludTotales, pb.puntosAtaqueBase, pb.puntosDefensaBase,pb.puntosAtaqueEspecialBase,pb.puntosVelocidadBase,pb.urlImage;`, [pokeId])
+} */
+
+const getPokeWithmoves = (pokeId) => {
+    return db.query(`SELECT pb.*, m.* 
+                    FROM Pokemons AS pb
+                    JOIN Pokemoves pm ON pb.id = pm.pokemons_id
+                    JOIN movimientos m ON m.id = pm.movimientos_id
+                    WHERE pb.id = ?`, [pokeId]);
 }
 
 module.exports = {

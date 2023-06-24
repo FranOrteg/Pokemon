@@ -1,7 +1,12 @@
 .titulo {
-    display: flex;
+    display: block;
     justify-content: center;
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
+    color: white;
+}
+
+.titulo h2 {
+    font-size: 1rem;
 }
 
 .container {
@@ -28,7 +33,6 @@ body {
 .card-title {
     display: flex;
     justify-content: center;
-    padding-bottom: 2rem;
     color: #107184;
 }
 
@@ -45,5 +49,23 @@ body {
 }
 
 span {
-    color: aqua;
+    color: #02cff8;
+}
+
+
+.move {
+    color: #107184;
+}
+
+p.card-text.moves {
+    justify-content: space-between;
+}
+
+.card-text {
+    display: flex;
+    justify-content: flex-start
+}
+
+.resultados {
+    font-size: 1rem;
 }

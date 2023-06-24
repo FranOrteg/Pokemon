@@ -67,4 +67,10 @@ export class PokemonService {
     )
   }
 
+  getPokeMoveJoin(pid: number) {
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/movimientos/pokemovejoin/${pid}`)
+    )
+  }
+
 }

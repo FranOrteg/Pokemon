@@ -1,4 +1,4 @@
-const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType, getPossibleMoves, getPokeListByMoves, getPokeListByMoveName, getPokeWithmoves } = require('../../models/movimientos.model');
+const { getAllMoves, getMoveById, createmove, updateMove, deleteMove, getMoveByPokeType, getPossibleMoves, getPokeListByMoves, getPokeListByMoveName, getPokeWithmoves, getPokeWithmovesJoin } = require('../../models/movimientos.model');
 
 const router = require('express').Router();
 
@@ -80,7 +80,18 @@ router.get('/pokemove/:id', async (req, res) => {
     } catch (error) {
         res.json({ fatal: 'No se ha podido recuperar el pokemon' })
     }
-})
+});
+
+// obtener los movimientos de los pokemons por el Id Juntos
+router.get('/pokemovejoin/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const [poke] = await getPokeWithmovesJoin(id)
+        res.json(poke)
+    } catch (error) {
+        res.json({ fatal: 'No se ha podido recuperar el pokemon' })
+    }
+});
 
 /* POST */
 

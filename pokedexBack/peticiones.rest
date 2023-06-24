@@ -121,6 +121,9 @@ GET {{Host}}{{urlMovimientos}}/move/name/Bubbles
 //Recuperar un pokemon y sus movimientos
 GET {{Host}}{{urlMovimientos}}/pokemove/2
 
+###
+//Recuperar un pokemon y sus movimientos juntos
+GET {{Host}}{{urlMovimientos}}/pokemovejoin/2
 
 
 

@@ -34,7 +34,8 @@ export class PokeViewComponent {
   ngOnInit(): void {
     this.activedRoute.params.subscribe(async (params: any) => {
       let id = params.id
-      this.pokemon = await this.pokeService.getPokeBaseAndMoves(id)
+      this.pokemon = await this.pokeService.getPokeMoveJoin(id)
+      console.log(this.pokemon);
     })
   }
 

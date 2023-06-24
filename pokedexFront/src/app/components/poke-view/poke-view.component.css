@@ -8,6 +8,7 @@ body {
     justify-content: center;
 }
 
+/* Card */
 img {
     margin: 0 auto;
     padding-top: 1rem;
@@ -19,6 +20,22 @@ span {
     color: goldenrod;
 }
 
+.moves {
+    display: flex;
+    justify-content: flex-start;
+    color: #1a7081;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-size: 1.3rem;
+}
+
+/* Enlace vuelta pokedex */
 .enlace {
     padding-top: 3rem;
     padding-left: 3rem;
@@ -31,4 +48,22 @@ a {
 
 a:hover {
     color: aqua;
+}
+
+/* Formulario */
+
+.form-control {
+    background: #605e5e;
+    border: 2px solid #32d2f2;
+    color: white;
+
+}
+
+::placeholder {
+    color: white;
+}
+
+.offcanvas {
+    background: #605e5e;
+    color: white;
 }

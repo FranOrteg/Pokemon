@@ -1,7 +1,10 @@
-#pokemons img {
+.title {
     margin: 0 auto;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     display: flex;
+    max-width: 50%;
+    max-height: 50%;
+    padding-top: 3rem;
 }
 
 header {
@@ -16,7 +19,7 @@ body {
     padding-bottom: 5rem;
 }
 
-.card {
+/* .card {
     background: darkgray;
     cursor: pointer;
 }
@@ -26,4 +29,64 @@ body {
     justify-content: center;
     padding-bottom: 2rem;
     color: #107184;
+} */
+
+img {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.pokemon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    border: 2px solid #107184;
+    border-radius: 20px;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pokemon p {
+    color: white;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.imagen {
+    width: 10%;
+    height: 10%;
+    cursor: pointer;
+}
+
+.pokeball {
+    width: 8%;
+    height: 8%;
+    cursor: pointer;
+}
+
+.imagen img {
+    border-radius: 15px;
+}
+
+.pokemon p:hover {
+    color: #02cff8;
+}
+
+.pokemon i {
+    color: white;
+    cursor: pointer;
+    font-size: 1.3rem;
+
+}
+
+.pokemon i:hover {
+    color: #02cff8;
+}
+
+@media (max-width: 768px) {
+    .col-6 {
+        width: 100%;
+    }
 }

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { PokemonComponent } from '../pokemon/pokemon.component';
 import { Pokemon } from 'src/app/interfaces/pokemon';
 import { Movimiento } from 'src/app/interfaces/movimiento';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -15,13 +14,15 @@ export class CombateComponent {
   @Input() selectePokemon: any
   pokemonGanador: string | null = null;
   selectemoves: any
+  result: string;
+  combateTerminado: boolean = false;
 
 
   constructor(
     private pokeService: PokemonService,
-    private pokeComp: PokemonComponent
   ) {
     this.selectePokemon = this.pokeService.selectedPokemon
+    this.result = ''
     this.pokemon = {
       nivel: 0,
       nombre: '',
@@ -43,15 +44,20 @@ export class CombateComponent {
   iniciarCombate(): void {
     if (this.selectePokemon.length < 2) {
       console.log('Debes seleccionar al menos 2 Pokémon para iniciar el combate.');
+      alert('Debes seleccionar al menos 2 Pokémon para iniciar el combate.')
+      return;
+    };
+
+    if (!this.selectemoves || this.selectemoves.length === 0) {
+      console.log('Debes seleccionar al menos 2 movimientos para iniciar el combate.');
+      alert('Debes seleccionar al menos 2 movimientos para iniciar el combate.')
       return;
     }
 
     const pokemon1 = this.selectePokemon[0][0];
     const pokemon2 = this.selectePokemon[1][0];
-    /* console.log('pokemon1', pokemon1); */
 
-
-
+    // Inicializar los puntos de salud actuales de los pokémon
     for (let turno = 1; turno <= 100; turno++) {
       let atacante: Pokemon;
       let defensor: Pokemon;
@@ -66,14 +72,15 @@ export class CombateComponent {
 
       // Calcular daño
       const movimiento = this.selectemoves[0];
-      /* console.log('movimiento', movimiento);
- */
+
       const daño = this.calcularDaño(atacante, movimiento, defensor);
-      /* console.log('Daño causado:', daño); */
+      console.log('Daño causado:', daño);
       defensor.puntosSaludActuales -= daño;
 
       console.log(`${atacante.nombre} ataca a ${defensor.nombre} y causa ${daño} puntos de daño.`);
+      this.result += `${atacante.nombre} ataca a ${defensor.nombre} y causa ${daño} puntos de daño.\n`
 
+      // Comprobar si el combate ha terminado
       if (pokemon1.puntosSaludActuales <= 0 || pokemon2.puntosSaludActuales <= 0) {
         break;
       }
@@ -82,22 +89,19 @@ export class CombateComponent {
     if (pokemon1.puntosSaludActuales <= 0 && pokemon2.puntosSaludActuales <= 0) {
       console.log('¡El combate ha terminado en empate!');
       this.pokemonGanador = null
+
     } else if (pokemon1.puntosSaludActuales <= 0) {
       console.log(`${pokemon2.nombre} ha ganado el combate.`);
       this.pokemonGanador = pokemon2.nombre
+
     } else {
       console.log(`${pokemon1.nombre} ha ganado el combate.`);
       this.pokemonGanador = pokemon1.nombre
     }
-  }
+    this.combateTerminado = true;
+  };
 
-  async selectedMoves(pokeId: number) {
-    let move = await this.pokeService.getMoveById(pokeId)
-    this.selectemoves = move
-    console.log(this.selectemoves)
-    return move
-  }
-
+  // Esta función calcula el daño que se inflige al pokemon rival
   calcularDaño(pokemonPropio: Pokemon, movimiento: Movimiento, rival: Pokemon): number {
 
     // Calculamos la efectividad del movimiento del pokemon 
@@ -166,5 +170,25 @@ export class CombateComponent {
     return indice
   };
 
-}
+  // Esta función comprueba si se han seleccionado al menos 2 pokémon
+  isSelectePokemon(): boolean {
+    return this.selectePokemon.length !== 2
+  };
 
+  // Restablecer los valores necesarios para reiniciar el combate
+  reset(): void {
+    /* this.selectemoves = null;
+    this.result = '';
+    this.pokemonGanador = null;
+    this.combateTerminado = false; */
+    location.reload();
+  };
+
+
+  async selectedMoves(pokeId: number) {
+    let move = await this.pokeService.getMoveById(pokeId)
+    this.selectemoves = move
+    console.log(this.selectemoves)
+    return move
+  };
+}

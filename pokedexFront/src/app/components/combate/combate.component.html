@@ -2,7 +2,10 @@
     <section>
         <div class="titulo">
 
-            <h1>Zona Combate</h1>
+            <h1>Zona<span> Combate</span></h1>
+            <div class="seleccionado" *ngIf="isSelectePokemon()">
+                <h2>Selecciona dos pokes</h2>
+            </div>
         </div>
         <div class="container">
             <div *ngFor="let poke of selectePokemon">
@@ -10,24 +13,34 @@
                     <img [src]="poke[0].urlImage" class="card-img-top rounded-top-4">
                     <div class="card-body">
                         <h5 class="card-title">{{poke[0].nombre}}</h5>
+                        <hr>
                         <p class="card-text">Clase: {{poke[0].tipo}}</p>
                         <p class="card-text">Nivel: {{poke[0].nivel}}</p>
                         <p class="card-text">Salud: {{poke[0].puntosSaludActuales}}</p>
-                        <p class="card-text">Movimientos</p>
-                        <p *ngFor="let ataq of poke" class="card-text">{{ataq.ataque}}
-                            <input type="checkbox" (click)="selectedMoves(ataq.id)">
+                        <p class="card-text"><span class="move">Movimientos</span></p>
+                        <hr>
+                        <p *ngFor="let ataq of poke" class="card-text moves">{{ataq.ataque}}
+                            <input class="input" type="checkbox" (click)="selectedMoves(ataq.id)">
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="ganador" *ngIf="pokemonGanador">
             <h2><span>{{ pokemonGanador }} ha ganado el combate</span></h2>
         </div>
-        <div class="boton">
-            <button class="btn btn-danger" (click)="iniciarCombate()">Iniciar Combate</button>
+        <div class="resultados" *ngIf="result">
+            <pre [innerHTML]="result"></pre>
         </div>
+
+        <div class="boton" *ngIf="!combateTerminado">
+            <button class="btn btn-danger" (click)="iniciarCombate()">Iniciar
+                Combate</button>
+        </div>
+        <div class="boton" *ngIf="combateTerminado">
+            <button class="btn btn-danger" (click)="reset()">Reset</button>
+        </div>
+
+
     </section>
 </div>

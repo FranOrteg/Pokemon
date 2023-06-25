@@ -7,7 +7,7 @@
 .botones {
     padding-top: 1rem;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .form-control {
@@ -24,6 +24,10 @@
 .offcanvas {
     background: #605e5e;
     color: white;
+}
+
+.error {
+    color: #32d2f2;
 }
 
 /* Medias */

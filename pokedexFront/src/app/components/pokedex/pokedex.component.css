@@ -15,21 +15,14 @@ body {
     background: #605e5e;
 }
 
+main {
+    padding-bottom: 2rem;
+}
+
+/* Lista Pokes */
 .pokemonList {
     padding-bottom: 5rem;
 }
-
-/* .card {
-    background: darkgray;
-    cursor: pointer;
-}
-
-.card-title {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 2rem;
-    color: #107184;
-} */
 
 img {
     width: 100%;
@@ -46,12 +39,18 @@ img {
     border-radius: 20px;
     padding-right: 1rem;
     margin-bottom: 1rem;
+    box-shadow: #161616 0px 0px 10px 0px;
 }
 
 .pokemon p {
     color: white;
     cursor: pointer;
     margin-bottom: 0;
+}
+
+.pokemon p:hover {
+    color: #02cff8;
+    font-size: 1.2rem;
 }
 
 .imagen {
@@ -64,27 +63,18 @@ img {
     width: 8%;
     height: 8%;
     cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.pokeball:hover {
+    transform: rotate(360deg);
 }
 
 .imagen img {
     border-radius: 15px;
 }
 
-.pokemon p:hover {
-    color: #02cff8;
-}
-
-.pokemon i {
-    color: white;
-    cursor: pointer;
-    font-size: 1.3rem;
-
-}
-
-.pokemon i:hover {
-    color: #02cff8;
-}
-
+/* Medias */
 @media (max-width: 768px) {
     .col-6 {
         width: 100%;

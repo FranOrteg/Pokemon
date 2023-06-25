@@ -1,6 +1,6 @@
 <section class="header">
     <nav>
-        <form [formGroup]="searchForm" (ngSubmit)="getData()">
+        <form [formGroup]="createForm" (ngSubmit)="getData()">
             <div class="container">
 
 
@@ -16,9 +16,10 @@
                         <select class="form-select" aria-label="Default select example" (change)="getType()"
                             formControlName="tipo">
                             <option value="" disabled selected>Pokemon Type</option>
-                            <option *ngFor="let type of getUniqueTypes(pokemons)" [value]="type">{{ type }}</option>
+                            <option *ngFor="let type of uniqueTypes" [value]="type">{{ type }}</option>
                         </select>
                     </div>
+
                 </div>
 
 
@@ -31,46 +32,83 @@
                     </div>
 
                     <div class="offcanvas-body">
-                        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                        <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                             <div class="mb-3">
                                 <label class="form-label">Nivel</label>
                                 <input type="text" class="form-control" formControlName="nivel">
+
+                                <p class="error" *ngIf="checkError('nivel','required')">El Campo Nivel es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nombre</label>
                                 <input type="text" class="form-control" formControlName="nombre">
+
+                                <p class="error" *ngIf="checkError('nombre','required')">El Campo Nombre es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tipo</label>
                                 <input type="text" class="form-control" formControlName="tipo">
+
+                                <p class="error" *ngIf="checkError('tipo','required')">El Campo Tipo es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Puntos Salud Actuales</label>
                                 <input type="text" class="form-control" formControlName="puntosSaludActuales">
+
+                                <p class="error" *ngIf="checkError('puntosSaludActuales','required')">El Campo Puntos de
+                                    Salud Actuales es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Puntos Salud Totales</label>
                                 <input type="text" class="form-control" formControlName="puntosSaludTotales">
+
+                                <p class="error" *ngIf="checkError('puntosSaludTotales','required')">El Campo Puntos de
+                                    Salud Totales es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Puntos Ataque Base</label>
                                 <input type="text" class="form-control" formControlName="puntosAtaqueBase">
+
+                                <p class="error" *ngIf="checkError('puntosAtaqueBase','required')">El Campo puntos de
+                                    Ataque Base es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Puntos Defensa Base</label>
                                 <input type="text" class="form-control" formControlName="puntosDefensaBase">
+
+                                <p class="error" *ngIf="checkError('puntosDefensaBase','required')">El Campo Puntos de
+                                    Defensa Base es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Puntos Ataque Especial Base</label>
                                 <input type="text" class="form-control" formControlName="puntosAtaqueEspecialBase">
+
+                                <p class="error" *ngIf="checkError('puntosAtaqueEspecialBase','required')">El Campo
+                                    Puntos de Ataque Especial Base es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Puntos Velocidad Base</label>
                                 <input type="text" class="form-control" formControlName="puntosVelocidadBase">
+
+                                <p class="error" *ngIf="checkError('puntosVelocidadBase','required')">El Campo de Puntos
+                                    de Velocidad Base es Obligatorio
+                                </p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">UrlImage</label>
                                 <input type="text" class="form-control" formControlName="urlImage">
+
+                                <p class="error" *ngIf="checkError('urlImage','required')">El Campo urlImage es
+                                    Obligatorio
+                                </p>
                             </div>
                             <button type="submit" class="btn btn-info">Crear</button>
                         </form>

@@ -7,50 +7,7 @@
         </app-header>
     </header>
 
-
     <main>
-        <!-- <section class="pokemonList">
-            <div id="pokemons" class="container mt-5">
-                <div class="title">
-                    <img src="../../../assets/images/pngwing.com.png" class="img-fluid">
-                </div>
-                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <div class="col" *ngFor="let poke of arrPokemons">
-                        <div class="card rounded-4">
-                            <img [src]="poke.urlImage" class="card-img-top rounded-top-4"
-                                [routerLink]="['/pokemon',poke.id]">
-
-                            <div class="card-body">
-                                <h5 class="card-title">{{poke.nombre}}</h5>
-                                <p class="card-text">Clase: {{poke.tipo}}</p>
-                                <p class="card-text">Nivel: {{poke.nivel}}</p>
-                                <p class="card-text">Salud: {{poke.puntosSaludTotales}}</p>
-                                <div class="d-flex gap-2 justify-content-end">
-                                    <input type="checkbox" (click)="pokeSelected(poke.id)">
-                                    <label>Select</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                <div class="list">
-                    <ul>
-                        <li class="pokemon" *ngFor="let poke of arrPokemons">
-                            <div class="imagen">
-                                <img [src]="poke.urlImage" alt="" [routerLink]="['/pokemon',poke.id]" class="img-fluid">
-                            </div>
-                            <p>{{poke.nombre}}</p>
-                            <i class="fa-regular fa-circle" (click)="pokeSelected(poke.id)"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <section>
-            <app-combate [selectePokemon]="pokemonSelected"></app-combate>
-        </section> -->
 
         <div class="title">
             <img src="../../../assets/images/pngwing.com.png" class="img-fluid">
@@ -60,25 +17,6 @@
             <div class="row">
                 <div class="col">
                     <div id="pokemons" class="container mt-5">
-                        <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
-                                        <div class="col" *ngFor="let poke of arrPokemons">
-                                            <div class="card rounded-4">
-                                                <img [src]="poke.urlImage" class="card-img-top rounded-top-4"
-                                                    [routerLink]="['/pokemon',poke.id]">
-                    
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{poke.nombre}}</h5>
-                                                    <p class="card-text">Clase: {{poke.tipo}}</p>
-                                                    <p class="card-text">Nivel: {{poke.nivel}}</p>
-                                                    <p class="card-text">Salud: {{poke.puntosSaludTotales}}</p>
-                                                    <div class="d-flex gap-2 justify-content-end">
-                                                        <input type="checkbox" (click)="pokeSelected(poke.id)">
-                                                        <label>Select</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                         <div class="list">
                             <ul>
                                 <li class="pokemon" *ngFor="let poke of arrPokemons">
